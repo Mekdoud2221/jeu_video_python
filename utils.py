@@ -1,17 +1,18 @@
-
-# Fonctions  connexion, saisies, affichage
+# Fonctions de connexion, saisies et affichage
 
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 
-# connexion a la base jeu_video
+# Connexion à la base jeu_video
 def get_db():
-    # attente max de 3 secondes si le serveur ne repond pas
+    # Attendre au maximum 3 secondes
     client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=3000)
+
     try:
-        # ping pour verifier que MongoDB est bien lancer
+        # Vérifier que MongoDB fonctionne
         client.admin.command("ping")
     except ServerSelectionTimeoutError:
-        print("Impossible de se connecter a MongoDB. Le service est-il lance ?")
+        print("Impossible de se connecter à MongoDB. Le service est-il lancé ?")
         return None
+
     return client["jeu_video"]
