@@ -16,3 +16,21 @@ def get_db():
         return None
 
     return client["jeu_video"]
+
+# Demander le nom du joueur
+def saisir_nom():
+    return input("Entre ton nom : ")
+
+
+# Afficher l'equipe
+def afficher_equipe(equipe):
+    for perso in equipe:
+        print(perso)
+
+
+# Afficher le classement
+def afficher_classement(scores):
+    print("\n===== CLASSEMENT =====")
+    for score in scores:
+        print(score["joueur"], ":", score["score"])
+    
